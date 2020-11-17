@@ -196,6 +196,7 @@ export default {
         this.unit ? unit = this.unit : unit = ''
         return this.qty + '' + unit
       }
+      return ''
     },
     computedQty: {
       get: function () {
