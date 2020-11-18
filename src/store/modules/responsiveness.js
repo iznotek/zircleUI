@@ -11,7 +11,9 @@ const responsiveness = {
     return store.state.diameters[sizes]
   },
   getDimensions () {
-    let container = document.getElementById('z-container').offsetWidth
+    let cwidth = document.getElementById('z-container').offsetWidth
+    let cheight = document.getElementById('z-container').offsetHeight
+    let container = cwidth < cheight ? cwidth : cheight
     let size = store.state.sizes
     store.state.diameters = {
       xxl: container * (size.xxl / 100),
