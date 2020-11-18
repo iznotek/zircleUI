@@ -30,7 +30,7 @@ export default {
       this.$zircle.getHistoryLength() === 0 ? pos = { X: 0, Y: 0, Xi: 0, Yi: 0, scale: 1, scalei: 1 } : pos = this.$zircle.getCurrentPosition()
       return {
         transform: 'scale(' + pos.scale + ') translate3d(' + pos.Xi + 'px, ' + pos.Yi + 'px, 0px)',
-        transition: 'transform 1000ms ease-in-out'
+        transition: 'transform ' + this.$zircle.getTransition()
       }
     },
     classes () {

@@ -1,6 +1,12 @@
 <template>
   <z-view>
     WELCOME TO ZIRCLE UI
+  <!--    <div slot="image">
+        <div class="transition" :style="style(space)">
+          <img class="transition" :style="{'opacity': opacity(space, 0.9)}" :src="spotimage(space)" height="475px">
+        </div>
+      </div> -->
+
     <div slot='extension'>
       <z-spot
         :angle='45'

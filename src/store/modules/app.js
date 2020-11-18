@@ -3,6 +3,9 @@ const app = {
   getAppMode () {
     return store.state.appMode
   },
+  getTransition () {
+    return store.state.transition
+  },
   config (config) {
     if (config.debug === true || config.debug === false) store.state.debug = config.debug
     if (store.state.debug === true) {
@@ -12,6 +15,10 @@ const app = {
     if (config.mode === 'full' || config.mode === 'mixed') {
       store.state.appMode = config.mode
       store.actions.setLog('- Mode: ' + config.mode)
+    }
+    if (config.transition) {
+      store.state.transition = config.transition
+      store.actions.setLog('- Transition: ' + config.transition)
     }
     if (config.sizes) {
       if (config.sizes.xxl) store.state.sizes.xxl = config.sizes.xxl

@@ -10,6 +10,7 @@ export default {
   mounted () {
     this.$zircle.config({
       debug: true,
+      transition: '800ms ease-out',
       style: {
         theme: 'blue'
       }

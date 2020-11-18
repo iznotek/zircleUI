@@ -3,6 +3,7 @@ const state = new Vue({
   data: {
     // app Mode
     appMode: 'full',
+    transition: '1000ms ease-in-out',
     // navigation
     navigationMode: 'forward',
     isRouterEnabled: false,
