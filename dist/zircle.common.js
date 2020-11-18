@@ -489,12 +489,12 @@ module.exports.f = function getOwnPropertyNames(it) {
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3ac32277-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/z-canvas.vue?vue&type=template&id=fc58c592&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3ac32277-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/z-canvas.vue?vue&type=template&id=2ba7233f&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"z-canvas",class:[_vm.classes, _vm.$zircle.getTheme(), _vm.$zircle.getThemeMode(), _vm.$zircle.getThemeShape()],style:([_vm.$zircle.getPreviousViewName() !== '' ? {cursor: 'zoom-out'} : {}]),attrs:{"id":"z-container"},on:{"click":function($event){$event.stopPropagation();return _vm.goback($event)}}},[_c('div',{ref:"zoom",style:(_vm.zoom),attrs:{"id":"z-zoomable-layer"},on:{"transitionend":_vm.notify}},[_c('z-view-manager')],1)])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/z-canvas.vue?vue&type=template&id=fc58c592&
+// CONCATENATED MODULE: ./src/components/z-canvas.vue?vue&type=template&id=2ba7233f&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3ac32277-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/child-components/z-view-manager.vue?vue&type=template&id=4d70a21d&
 var z_view_managervue_type_template_id_4d70a21d_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition-group',{attrs:{"name":_vm.$zircle.getNavigationMode() === 'forward' ? 'z-next' : 'z-prev',"tag":"section"}},[_vm._l((_vm.views),function(view){return _c(view.component,{key:view.name,tag:"component",class:{
@@ -601,7 +601,7 @@ var component = Object(componentNormalizer["a" /* default */])(
       } : pos = this.$zircle.getCurrentPosition();
       return {
         transform: 'scale(' + pos.scale + ') translate3d(' + pos.Xi + 'px, ' + pos.Yi + 'px, 0px)',
-        transition: 'transform 1000ms ease-in-out'
+        transition: 'transform ' + this.$zircle.getTransition()
       };
     },
     classes: function classes() {
@@ -701,6 +701,7 @@ var state = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a({
   data: {
     // app Mode
     appMode: 'full',
+    transition: '1000ms ease-in-out',
     // navigation
     navigationMode: 'forward',
     isRouterEnabled: false,
@@ -1212,7 +1213,9 @@ var responsiveness = {
     return store_store.state.diameters[sizes];
   },
   getDimensions: function getDimensions() {
-    var container = document.getElementById('z-container').offsetWidth;
+    var cwidth = document.getElementById('z-container').offsetWidth;
+    var cheight = document.getElementById('z-container').offsetHeight;
+    var container = cwidth < cheight ? cwidth : cheight;
     var size = store_store.state.sizes;
     store_store.state.diameters = {
       xxl: container * (size.xxl / 100),
@@ -1307,6 +1310,9 @@ var app = {
   getAppMode: function getAppMode() {
     return store_store.state.appMode;
   },
+  getTransition: function getTransition() {
+    return store_store.state.transition;
+  },
   config: function config(_config) {
     if (_config.debug === true || _config.debug === false) store_store.state.debug = _config.debug;
 
@@ -1318,6 +1324,11 @@ var app = {
     if (_config.mode === 'full' || _config.mode === 'mixed') {
       store_store.state.appMode = _config.mode;
       store_store.actions.setLog('- Mode: ' + _config.mode);
+    }
+
+    if (_config.transition) {
+      store_store.state.transition = _config.transition;
+      store_store.actions.setLog('- Transition: ' + _config.transition);
     }
 
     if (_config.sizes) {

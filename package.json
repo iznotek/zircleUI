@@ -1,6 +1,6 @@
 {
   "name": "zircle",
-  "version": "1.4.0-rc.1",
+  "version": "1.4.1",
   "description": "A frontend library to develop zoomable user interfaces",
   "author": "Juan Martín Muda <juan.martin.muda@gmail.com>",
   "main": "dist/zircle.umd.js",
@@ -15,7 +15,7 @@
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
     "test": "vue-cli-service test:unit",
-    "build:zircle": "vue-cli-service build --target lib --name zircle ./src/index.js"
+    "build": "vue-cli-service build --target lib --name zircle ./src/index.js"
   },
   "keywords": [
     "zircle",
