@@ -1213,20 +1213,24 @@ var responsiveness = {
     return store_store.state.diameters[sizes];
   },
   getDimensions: function getDimensions() {
-    var cwidth = document.getElementById('z-container').offsetWidth;
-    var cheight = document.getElementById('z-container').offsetHeight;
-    var container = cwidth < cheight ? cwidth : cheight;
-    var size = store_store.state.sizes;
-    store_store.state.diameters = {
-      xxl: container * (size.xxl / 100),
-      xl: container * (size.xl / 100),
-      l: container * (size.l / 100),
-      m: container * (size.m / 100),
-      s: container * (size.s / 100),
-      xs: container * (size.xs / 100),
-      xxs: container * (size.xxs / 100)
-    };
-    store_store.actions.setLog("Size change detected on z-canvas");
+    var cElm = document.getElementById('z-container');
+
+    if (cElm) {
+      var cwidth = cElm.offsetWidth;
+      var cheight = cElm.offsetHeight;
+      var container = cwidth < cheight ? cwidth : cheight;
+      var size = store_store.state.sizes;
+      store_store.state.diameters = {
+        xxl: container * (size.xxl / 100),
+        xl: container * (size.xl / 100),
+        l: container * (size.l / 100),
+        m: container * (size.m / 100),
+        s: container * (size.s / 100),
+        xs: container * (size.xs / 100),
+        xxs: container * (size.xxs / 100)
+      };
+      store_store.actions.setLog("Size change detected on z-canvas");
+    }
   }
 };
 /* harmony default export */ var modules_responsiveness = (responsiveness);
