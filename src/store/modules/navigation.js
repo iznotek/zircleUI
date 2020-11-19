@@ -140,9 +140,9 @@ const navigation = {
     }
   },
   reset () {
-    if (store.state.history.length === 1) {
+    if (store.state.history.length > 0) {
       store.actions.setNavigationMode('backward')
-      store.state.history.pop()
+      store.state.history.splice(0, store.state.history.length)
       store.state.params = ''
       store.actions.setLog('reset()')
     }
