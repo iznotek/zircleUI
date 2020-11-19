@@ -111,7 +111,7 @@ const navigation = {
     }
   },
   setView (data, options) {
-    if (store.state.history.length < 6 && store.state.isRouterEnabled === false) {
+    if (store.state.history.length < 7 && store.state.isRouterEnabled === false) {
       let view = parseView(data)
       let position = {}
       !options ? position = { X: 0, Y: 0, scale: 1, Xi: 0, Yi: 0, scalei: 1 } : position = options.position
@@ -137,6 +137,14 @@ const navigation = {
         store.state.params = store.state.history[store.state.history.length - 1].params
       }
       store.actions.setLog('goBack() => ' + store.state.history[store.state.history.length - 1].name)
+    }
+  },
+  reset () {
+    if (store.state.history.length === 1) {
+      store.actions.setNavigationMode('backward')
+      store.state.history.pop()
+      store.state.params = ''
+      store.actions.setLog('reset()')
     }
   }
 }
