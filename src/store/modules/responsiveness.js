@@ -11,20 +11,23 @@ const responsiveness = {
     return store.state.diameters[sizes]
   },
   getDimensions () {
-    let cwidth = document.getElementById('z-container').offsetWidth
-    let cheight = document.getElementById('z-container').offsetHeight
-    let container = cwidth < cheight ? cwidth : cheight
-    let size = store.state.sizes
-    store.state.diameters = {
-      xxl: container * (size.xxl / 100),
-      xl: container * (size.xl / 100),
-      l: container * (size.l / 100),
-      m: container * (size.m / 100),
-      s: container * (size.s / 100),
-      xs: container * (size.xs / 100),
-      xxs: container * (size.xxs / 100)
+    let cElm = document.getElementById('z-container')
+    if (cElm) {
+      let cwidth = cElm.offsetWidth
+      let cheight = cElm.offsetHeight
+      let container = cwidth < cheight ? cwidth : cheight
+      let size = store.state.sizes
+      store.state.diameters = {
+        xxl: container * (size.xxl / 100),
+        xl: container * (size.xl / 100),
+        l: container * (size.l / 100),
+        m: container * (size.m / 100),
+        s: container * (size.s / 100),
+        xs: container * (size.xs / 100),
+        xxs: container * (size.xxs / 100)
+      }
+      store.actions.setLog(`Size change detected on z-canvas`)
     }
-    store.actions.setLog(`Size change detected on z-canvas`)
   }
 }
 export default responsiveness
