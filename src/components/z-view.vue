@@ -7,7 +7,7 @@
     @animationend="notify"
     @mouseover = "$zircle.allowBackwardNavigation(true)"
     @mouseleave = "$zircle.allowBackwardNavigation(false)">
-    <div :id="fullView" v-if="$slots['image'] || imagePath" class="z-content">
+    <div :id="fullView" v-if="$slots['image'] || imagePath" class="z-content" :class="[shape]">
       <img v-if="imagePath" :src="imagePath" width="100%" height="100%" />
       <slot v-if="!imagePath" name="image"></slot>
     </div>
