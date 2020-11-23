@@ -93,6 +93,14 @@ export default {
     pos: {
       type: [String]
     },
+    time: {
+      type: [Number],
+      default: 500
+    },
+    delay: {
+      type: [Number],
+      default: 500
+    },
     slider: {
       type: [Boolean],
       default: false
@@ -120,7 +128,8 @@ export default {
       zpos: {},
       innerpos: {},
       extrainfo: '',
-      val: 0
+      val: 0,
+      scale: 0
     }
   },
   computed: {
@@ -171,7 +180,8 @@ export default {
           width: width + 'px',
           height: width + 'px',
           margin: -(width / 2) + 'px 0 0 ' + -(width / 2) + 'px',
-          transform: 'translate3d(' + this.position.X + 'px, ' + this.position.Y + 'px, 0px)'
+          transform: 'translate3d(' + this.position.X + 'px, ' + this.position.Y + 'px, 0px) scale(' + this.scale + ')',
+          transition: 'transform ' + this.time + 'ms ease'
         },
         plate: {
           width: width + 15 + 'px',
@@ -239,6 +249,14 @@ export default {
   },
   mounted () {
     this.zpos = this.styles
+
+    if (this.delay > 0) {
+      setTimeout(() => {
+        this.scale += 1
+      }, this.delay)
+    } else {
+      this.scale = 1
+    }
   }
 }
 </script>
