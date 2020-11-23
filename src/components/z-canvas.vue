@@ -28,6 +28,7 @@ export default {
     zoom () {
       var pos = {}
       var variation = { Xi: 500 * (-0.5 + Math.random()), Yi: 500 * (-0.5 + Math.random()) }
+      // var variation = { Xi: 0, Yi: 0 }
       this.$zircle.getHistoryLength() === 0 ? pos = { X: 0, Y: 0, Xi: variation.Xi, Yi: variation.Yi, scale: 0, scalei: 0 } : pos = this.$zircle.getCurrentPosition()
       return {
         transform: 'scale(' + pos.scale + ') translate3d(' + pos.Xi + 'px, ' + pos.Yi + 'px, 0px)',
@@ -77,6 +78,14 @@ export default {
     this.$el.appendChild(object)
     this.$nextTick(() => this.compareAndNotify)
     document.onmouseleave = () => this.$zircle.setNavigationMode('backward')
+  },
+  watch: {
+    '$zstate.history': {
+      deep: true,
+      handler() {
+        this.$emit('currentViewChanged', {name: this.$zircle.getCurrentViewName()})
+      }
+    }
   }
 }
 </script>

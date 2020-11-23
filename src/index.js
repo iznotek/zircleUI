@@ -12,6 +12,11 @@ const zircle = {
         return store.actions
       }
     })
+    Object.defineProperty(Vue.prototype, '$zstate', {
+      get () {
+        return store.state
+      }
+    })
     Vue.component('z-canvas', ZCanvas)
     Vue.component('z-view', ZView)
     Vue.component('z-list', ZViewList)
