@@ -1,5 +1,5 @@
 <template>
-  <z-canvas :views="$options.components" />
+  <z-canvas :views="$options.components" @currentViewChanged="currentViewChanged"/>
 </template>
 <script>
 export default {
@@ -9,13 +9,18 @@ export default {
   },
   mounted () {
     this.$zircle.config({
-      debug: true,
-      transition: '800ms ease-out',
+      debug: false,
+      transition: '800ms ease',
       style: {
         theme: 'blue'
       }
     })
     this.$zircle.setView('home')
+  },
+  methods: {
+    currentViewChanged (e) {
+      console.log(e)
+    }
   }
 }
 </script>

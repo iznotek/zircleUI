@@ -76,6 +76,16 @@ const navigation = {
   getPastViewName () {
     return retrieveViewName(3)
   },
+  isHidedViewName (viewName) {
+    if (store.state.history.length <= 3) return false
+    for (var pos = store.state.history.length - 3 - 1; pos >= 0; pos--) {
+      // console.log(store.state.history.length, pos)
+      if (viewName === store.state.history[pos].name) {
+        return true
+      }
+    }
+    return false
+  },
   getHistoryLength () {
     return store.state.history.length
   },
@@ -118,7 +128,7 @@ const navigation = {
       store.actions.addToHistory(view, position, view.route.params)
       store.actions.setNavigationMode('forward')
       if (view.route) store.state.params = view.route.params
-    } else if (store.state.history.length < 6 && store.state.isRouterEnabled === true) {
+    } else if (store.state.history.length < 7 && store.state.isRouterEnabled === true) {
       let view = parseView(data)
       let position = {}
       !options ? position = { X: 0, Y: 0, scale: 1, Xi: 0, Yi: 0, scalei: 1 } : position = options.position

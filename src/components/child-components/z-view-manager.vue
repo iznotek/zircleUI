@@ -22,7 +22,7 @@ export default {
   name: 'z-view-manager',
   computed: {
     views () {
-      return this.$zircle.getRouterState() === false ? this.$zircle.getHistory().slice(-3) : this.$zircle.getHistory().slice(-3, -1)
+      return this.$zircle.getRouterState() === false ? this.$zircle.getHistory().slice(-7) : this.$zircle.getHistory().slice(-7, -1)
     }
   }
 }
