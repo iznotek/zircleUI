@@ -82,8 +82,10 @@ export default {
   watch: {
     '$zstate.history': {
       deep: true,
-      handler() {
-        this.$emit('currentViewChanged', {name: this.$zircle.getCurrentViewName()})
+      handler () {
+        this.$emit('currentViewChanged', { 
+          name: this.$zircle.getCurrentViewName() 
+        })
       }
     }
   }
