@@ -5347,6 +5347,7 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
 var initialState = {
   // app Mode
   appMode: 'full',
+  transition: '1000ms ease-in-out',
   // navigation
   navigationMode: 'forward',
   isRouterEnabled: false,
@@ -6313,6 +6314,9 @@ var es_json_stringify = __webpack_require__(8862);
 var app = {
   getAppMode: function getAppMode() {
     return store_store.state.appMode;
+  },
+  getTransition: function getTransition() {
+    return store_store.state.transition;
   },
   isUsingPercentSizes: function isUsingPercentSizes() {
     return store_store.state.usePercentSizes;
@@ -7464,8 +7468,8 @@ var z_list_component = normalizeComponent(
 )
 
 /* harmony default export */ var z_list = (z_list_component.exports);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/z-spot.vue?vue&type=template&id=3c09f0df&
-var z_spotvue_type_template_id_3c09f0df_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/z-spot.vue?vue&type=template&id=c1d67bfe&
+var z_spotvue_type_template_id_c1d67bfe_render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
@@ -7540,7 +7544,7 @@ var z_spotvue_type_template_id_3c09f0df_render = function render() {
   }, [_vm.pos === 'inside' || _vm.pos === undefined ? _c('span', [_vm._v(_vm._s(_vm.progressLabel))]) : _vm._e(), _vm._t("default")], 2)]), _vm._t("extension")], 2);
 };
 
-var z_spotvue_type_template_id_3c09f0df_staticRenderFns = [];
+var z_spotvue_type_template_id_c1d67bfe_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/child-components/z-knob.vue?vue&type=template&id=0659ea6d&
 var z_knobvue_type_template_id_0659ea6d_render = function render() {
@@ -7833,7 +7837,8 @@ var z_knob_component = normalizeComponent(
       componentType: this.$options.name,
       zpos: {},
       innerpos: {},
-      extrainfo: ''
+      extrainfo: '',
+      scale: 0
     };
   },
   computed: {
@@ -7974,8 +7979,8 @@ var z_knob_component = normalizeComponent(
 ;
 var z_spot_component = normalizeComponent(
   components_z_spotvue_type_script_lang_js_,
-  z_spotvue_type_template_id_3c09f0df_render,
-  z_spotvue_type_template_id_3c09f0df_staticRenderFns,
+  z_spotvue_type_template_id_c1d67bfe_render,
+  z_spotvue_type_template_id_c1d67bfe_staticRenderFns,
   false,
   null,
   null,
