@@ -1,28 +1,33 @@
 <template>
-  <z-view>
-    WELCOME TO ZIRCLE UI
-  <!--    <div slot="image">
-        <div class="transition" :style="style(space)">
-          <img class="transition" :style="{'opacity': opacity(space, 0.9)}" :src="spotimage(space)" height="475px">
-        </div>
-      </div> -->
-
-    <div slot='extension'>
+  <z-view size="xl" square>
+    <template #extension>
       <z-spot
+        size="xs"
         :angle='45'
+        :distance='130'
         to-view='docs'
-        class='accent'
-        label='Docs'>
-        <i class='fas fa-book'></i>
+        class='shade'
+        label='doc & resources'>
+        <i class="fas fa-question-circle"></i>
       </z-spot>
       <z-spot
-        button
-        :angle='135'
-        class='accent'
-        label='Github'
-        @click.native="openUrl">
-        <i class='fab fa-github'></i>
+        size="m"
+        :angle='0'
+        :distance='0'
+        class="shade"
+        to-view='demo'>
+        <b>Zoom me</b>
       </z-spot>
-    </div>
+    </template>
   </z-view>
 </template>
+
+<script>
+export default {
+  methods: {
+    openUrl () {
+      window.open('https://github.com/zircleUI/zircleUI', '_blank')
+    }
+  }
+}
+</script>

@@ -1,33 +1,32 @@
 import store from '../store'
+import {
+  updateDiametersInPercent,
+  updateDiametersInFullMode,
+  updateDiametersInMixedMode,
+  updateDiametersDependsOnPixelRatio
+} from '@/store/utils/responsiveness'
 
 const responsiveness = {
   getComponentWidth (size) {
-    let sizes = size.toLowerCase()
-    if (sizes === 'extralarge') sizes = 'xl'
-    if (sizes === 'large') sizes = 'l'
-    if (sizes === 'medium') sizes = 'm'
-    if (sizes === 'small') sizes = 's'
-    if (sizes === 'extrasmall') sizes = 'xs'
-    return store.state.diameters[sizes]
+    size = size.toLowerCase()
+    if (size === 'extralarge') size = 'xl'
+    if (size === 'large') size = 'l'
+    if (size === 'medium') size = 'm'
+    if (size === 'small') size = 's'
+    if (size === 'extrasmall') size = 'xs'
+    return store.state.diameters[size]
   },
-  getDimensions () {
-    let cElm = document.getElementById('z-container')
-    if (cElm) {
-      let cwidth = cElm.offsetWidth
-      let cheight = cElm.offsetHeight
-      let container = cwidth < cheight ? cwidth : cheight
-      let size = store.state.sizes
-      store.state.diameters = {
-        xxl: container * (size.xxl / 100),
-        xl: container * (size.xl / 100),
-        l: container * (size.l / 100),
-        m: container * (size.m / 100),
-        s: container * (size.s / 100),
-        xs: container * (size.xs / 100),
-        xxs: container * (size.xxs / 100)
-      }
-      store.actions.setLog(`Size change detected on z-canvas`)
+  updateDiameters () {
+    if (store.state.usePercentSizes) {
+      updateDiametersInPercent()
+    } else if (store.actions.getAppMode() === 'full') {
+      updateDiametersInFullMode()
+    } else if (store.actions.getAppMode() === 'mixed') {
+      updateDiametersInMixedMode()
     }
+
+    updateDiametersDependsOnPixelRatio()
   }
 }
+
 export default responsiveness

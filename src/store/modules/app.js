@@ -1,34 +1,36 @@
 import store from '../store'
+import { initialState } from '@/store/state'
+
 const app = {
   getAppMode () {
     return store.state.appMode
   },
-  getTransition () {
-    return store.state.transition
+  isUsingPercentSizes () {
+    return store.state.usePercentSizes
+  },
+  resetConfig () {
+    Object.keys(initialState).forEach(key => {
+      store.state[key] = JSON.parse(JSON.stringify(initialState[key]))
+    })
   },
   config (config) {
-    if (config.debug === true || config.debug === false) store.state.debug = config.debug
-    if (store.state.debug === true) {
-      store.actions.setLog('config:')
-      store.actions.setLog('- Debug enabled')
-    }
+    if (typeof config.debug === 'boolean') store.state.debug = config.debug
+    if (store.state.debug === true) store.actions.setLog('- Debug enabled')
     if (config.mode === 'full' || config.mode === 'mixed') {
       store.state.appMode = config.mode
       store.actions.setLog('- Mode: ' + config.mode)
     }
-    if (config.transition) {
-      store.state.transition = config.transition
-      store.actions.setLog('- Transition: ' + config.transition)
+    if (typeof config.usePercentSizes === 'boolean') {
+      store.state.usePercentSizes = config.usePercentSizes
+      store.actions.setLog(`- Percent sizes ${config.usePercentSizes ? 'ON' : 'OFF'}`)
     }
-    if (config.sizes) {
-      if (config.sizes.xxl) store.state.sizes.xxl = config.sizes.xxl
-      if (config.sizes.xl) store.state.sizes.xl = config.sizes.xl
-      if (config.sizes.l) store.state.sizes.l = config.sizes.l
-      if (config.sizes.m) store.state.sizes.m = config.sizes.m
-      if (config.sizes.s) store.state.sizes.s = config.sizes.s
-      if (config.sizes.xs) store.state.sizes.xs = config.sizes.xs
-      if (config.sizes.xxs) store.state.sizes.xxs = config.sizes.xxs
-      store.actions.setLog('- Component sizes: ' + JSON.stringify(config.sizes))
+    if (config.percentSizes) {
+      store.state.percentSizes = config.percentSizes
+      store.actions.setLog('- Component percentSizes: ' + JSON.stringify(config.percentSizes))
+    }
+    if (config.minSizesInPixels) {
+      store.state.minSizesInPixels = config.minSizesInPixels
+      store.actions.setLog('- Component minSizesInPixels: ' + JSON.stringify(config.minSizesInPixels))
     }
     if (config.style && config.style.theme) {
       store.state.appStyle.theme = 'theme-' + config.style.theme
@@ -47,8 +49,10 @@ const app = {
       store.state.isRouterEnabled = true
       store.actions.setRouterHooks()
       store.actions.setLog('- VueRouter enabled')
-      // console.log(store.state.router.currentRoute)
-      store.actions.setView({ name: store.state.router.currentRoute.name, params: store.state.router.currentRoute.params })
+      store.actions.setView({
+        name: store.state.router.currentRoute.name,
+        params: store.state.router.currentRoute.params
+      })
       if (store.actions.getAppMode() === 'mixed') store.actions.setLog('You should not use VueRouter when Zircle is in mixed mode.', 'warn')
     }
   }

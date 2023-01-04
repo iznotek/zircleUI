@@ -6,7 +6,7 @@ import ZSpot from './components/z-spot.vue'
 import ZDialog from './components/z-dialog.vue'
 
 const zircle = {
-  install (Vue, options) {
+  install (Vue) {
     Object.defineProperty(Vue.prototype, '$zircle', {
       get () {
         return store.actions
@@ -25,8 +25,6 @@ const zircle = {
   }
 }
 
-export default zircle
-
 let GlobalVue = null
 if (typeof window !== 'undefined') {
   GlobalVue = window.Vue
@@ -36,3 +34,5 @@ if (typeof window !== 'undefined') {
 if (GlobalVue) {
   GlobalVue.use(zircle)
 }
+
+export default zircle

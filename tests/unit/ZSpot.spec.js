@@ -2,6 +2,7 @@ import { shallowMount, createLocalVue } from '@vue/test-utils'
 import zspot from '@/components/z-spot.vue'
 import zslider from '@/components/child-components/z-slider.vue'
 import zircle from '@/index'
+
 const localVue = createLocalVue()
 localVue.use(zircle)
 const wrapper = shallowMount(zspot, {
@@ -41,7 +42,7 @@ describe('z-spot.vue', () => {
 
   it('Has z-slider component and progress 80%', () => {
     expect(wrapper.vm.progress).toEqual(80)
-    expect(wrapper.find(zslider).exists()).toBe(true)
+    expect(wrapper.findComponent(zslider).exists()).toBe(true)
   })
   it('Has the expected html structure', () => {
     // Note: If props.imagesrc and or props.label are present, slots.imagesrc and slots.label wont be rendered

@@ -2,6 +2,7 @@ import { shallowMount, createLocalVue } from '@vue/test-utils'
 import zdialog from '@/components/z-dialog.vue'
 import zslider from '@/components/child-components/z-slider.vue'
 import zircle from '@/index'
+
 const localVue = createLocalVue()
 localVue.use(zircle)
 const wrapper = shallowMount(zdialog, {
@@ -23,7 +24,7 @@ describe('z-dialog.vue', () => {
   })
 
   it('Has z-slider child-component', () => {
-    expect(wrapper.find(zslider).exists()).toBe(true)
+    expect(wrapper.findComponent(zslider).exists()).toBe(true)
   })
   it('Has the expected html structure', () => {
     expect(wrapper.element).toMatchSnapshot()
