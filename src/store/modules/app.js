@@ -5,6 +5,9 @@ const app = {
   getAppMode () {
     return store.state.appMode
   },
+  getTransition () {
+    return store.state.transition
+  },
   isUsingPercentSizes () {
     return store.state.usePercentSizes
   },

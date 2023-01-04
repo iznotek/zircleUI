@@ -131,7 +131,8 @@ export default {
       componentType: this.$options.name,
       zpos: {},
       innerpos: {},
-      extrainfo: ''
+      extrainfo: '',
+      scale: 0
     }
   },
   computed: {

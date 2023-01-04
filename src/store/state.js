@@ -3,6 +3,7 @@ import Vue from 'vue'
 export const initialState = {
   // app Mode
   appMode: 'full',
+  transition: '1000ms ease-in-out',
   // navigation
   navigationMode: 'forward',
   isRouterEnabled: false,
