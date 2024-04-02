@@ -87,7 +87,7 @@ const navigation = {
   },
   isHidedViewName (viewName) {
     if (store.state.history.length <= 3) return false
-    for (var pos = store.state.history.length - 3 - 1; pos >= 0; pos--) {
+    for (let pos = store.state.history.length - 3 - 1; pos >= 0; pos--) {
       // console.log(store.state.history.length, pos)
       if (viewName === store.state.history[pos].name) {
         return true

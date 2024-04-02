@@ -69,6 +69,16 @@ export default {
     // Get window dimension to set the initial width of ui components such as z-panel
     this.$nextTick().then(() => this.$zircle.updateDiameters())
     window.addEventListener('resize', () => this.$zircle.updateDiameters())
+  },
+  watch: {
+    '$zstate.history': {
+      deep: true,
+      handler () {
+        this.$emit('currentViewChanged', {
+          name: this.$zircle.getCurrentViewName()
+        })
+      }
+    }
   }
 }
 </script>

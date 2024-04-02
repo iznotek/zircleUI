@@ -6399,7 +6399,7 @@ var store = {
   actions: store_actions
 };
 /* harmony default export */ var store_store = (store);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/z-canvas.vue?vue&type=template&id=71f46262&
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/z-canvas.vue?vue&type=template&id=75f3edb4&
 var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
@@ -6656,14 +6656,24 @@ var component = normalizeComponent(
     window.addEventListener('resize', function () {
       return _this.$zircle.updateDiameters();
     });
+  },
+  watch: {
+    '$zstate.history': {
+      deep: true,
+      handler: function handler() {
+        this.$emit('currentViewChanged', {
+          name: this.$zircle.getCurrentViewName()
+        });
+      }
+    }
   }
 });
 ;// CONCATENATED MODULE: ./src/components/z-canvas.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_z_canvasvue_type_script_lang_js_ = (z_canvasvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-69.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-69.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-69.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-69.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/z-canvas.vue?vue&type=style&index=0&id=71f46262&prod&lang=sass&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-69.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-69.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-69.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-69.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/z-canvas.vue?vue&type=style&index=0&id=75f3edb4&prod&lang=sass&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/z-canvas.vue?vue&type=style&index=0&id=71f46262&prod&lang=sass&
+;// CONCATENATED MODULE: ./src/components/z-canvas.vue?vue&type=style&index=0&id=75f3edb4&prod&lang=sass&
 
 ;// CONCATENATED MODULE: ./src/components/z-canvas.vue
 
