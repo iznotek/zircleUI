@@ -4,38 +4,39 @@
   "description": "A frontend library to develop zoomable user interfaces",
   "author": "Juan Martín Muda <juan.martin.muda@gmail.com>",
   "license": "MIT",
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "lint": "vue-cli-service lint --fix",
-    "build:zircle": "vue-cli-service build --target lib --name zircle ./src/index.js"
-  },
-  "main": "dist/zircle.umd.js",
-  "module": "dist/zircle.umd.js",
-  "unpkg": "dist/zircle.umd.js",
+  "type": "module",
+	"main": "./dist/zircle.umd.cjs",
+	"module": "./dist/zircle.js",
   "files": [
     "dist",
     "src"
   ],
+  "exports": {
+		".": {
+			"import": "./dist/zircle.js",
+			"require": "./dist/zircle.umd.cjs"
+		},
+		"./style.css": "./dist/style.css"
+	},
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test:unit": "vitest",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+  },
   "dependencies": {
-    "vue": "3.2.37"
+    "vue": "^3.4.29",
+    "vue-router": "^4.3.3"
   },
   "devDependencies": {
-    "@vue/compiler-sfc": "3.2.37",
-    "@vue/cli-plugin-babel": "5.0.8",
-    "@vue/cli-service": "^5.0.8",
-    "babel-core": "^6.26.3",
-    "eslint": "8.22.0",
-    "eslint-plugin-vue": "9.4.0",
-    "sass": "^1.54.0",
-    "sass-loader": "^13.0.2"
-  },
-  "jsdelivr": "dist/zircle.umd.js",
-  "keywords": [
-    "zircle",
-    "vue",
-    "frontend",
-    "library",
-    "javascript",
-    "zui"
-  ]
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vue/test-utils": "^2.4.6",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "jsdom": "^24.1.0",
+    "sass": "^1.77.6",
+    "vite": "^5.3.1",
+    "vitest": "^1.6.0"
+  }
 }

@@ -36,8 +36,8 @@
 </template>
 
 <script>
-import ZSlider from './child-components/z-slider'
-import ZKnob from './child-components/z-knob'
+import ZSlider from './child-components/z-slider.vue'
+import ZKnob from './child-components/z-knob.vue'
 
 export default {
   name: 'z-spot',
@@ -124,7 +124,6 @@ export default {
       zpos: {},
       innerpos: {},
       extrainfo: '',
-      publicPath: process.env.BASE_URL
     }
   },
   computed: {

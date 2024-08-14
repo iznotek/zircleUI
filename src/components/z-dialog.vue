@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import ZSlider from './child-components/z-slider'
-import ZScroll from './child-components/z-scroll'
+import ZSlider from './child-components/z-slider.vue'
+import ZScroll from './child-components/z-scroll.vue'
 
 export default {
   name: 'z-dialog',

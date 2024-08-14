@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import ZPagination from './child-components/z-pagination'
+import ZPagination from './child-components/z-pagination.vue'
 
 function chunk (myArray, chunkSize) {
   const res = []

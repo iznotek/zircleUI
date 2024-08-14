@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import ZViewManager from './child-components/z-view-manager'
+import ZViewManager from './child-components/z-view-manager.vue'
 
 export default {
   name: 'z-canvas',
